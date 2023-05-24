@@ -1,0 +1,18 @@
+.texto {
+  text-align: center;
+}
+
+.alinhamento {
+  display: flex;
+}
+
+.outlinedButton {
+  border-color: #a09f9f !important;
+  color: #a09f9f !important;
+}
+
+.outlinedButton:hover {
+  background-color: #a09f9f !important;
+  color: #5a0aa5 !important;
+  border-radius: 5px;
+}
