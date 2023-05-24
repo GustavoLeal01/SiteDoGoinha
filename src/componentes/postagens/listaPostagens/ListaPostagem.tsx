@@ -6,7 +6,7 @@ import useLocalStorage from 'react-use-localstorage';
 import { Postagem } from '../../../model/Postagem';
 import { busca } from '../../../service/service';
 
-function ListaPostagens() {
+function ListaPostagem() {
 
   const [postagens, setPostagens] = useState<Postagem[]>([])
   const navigate = useNavigate();
@@ -56,4 +56,4 @@ function ListaPostagens() {
   )
 }
 
-export default ListaPostagens
+export default ListaPostagem

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Home.css';
 import { Box, Button, Grid, Typography } from '@mui/material';
-import ListaPostagens from '../../componentes/postagens/listaPostagens/ListaPostagens';
+import ListaPostagens from '../../componentes/postagens/listaPostagens/ListaPostagem';
 import TabPostagens from '../../componentes/postagens/tabPostagens/TabPostagens';
 function Home() {
   return (
