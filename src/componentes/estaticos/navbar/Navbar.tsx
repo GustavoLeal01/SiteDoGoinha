@@ -1,25 +1,33 @@
 import { AppBar, Toolbar, Box, Typography, Grid } from '@mui/material';
 import './Navbar.css';
 import { Link, useNavigate } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
+import { useDispatch, useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
+import { addToken } from '../../../store/tokens/action';
 
 function Navbar() {
-  const [token, setToken] = useLocalStorage('token');
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
+
+  const dispatch = useDispatch()
   const navigate = useNavigate();
 
   function logout() {
     alert('Usuário deslogado com sucesso');
-    setToken('');
+    dispatch(addToken(''))
     navigate('/login');
   }
 
-  return (
-    <>
-      <AppBar position="static" className="navbar">
+  let navbarComponent;
+
+  if(token !== '') {
+    navbarComponent = (
+<AppBar position="static" className="navbar">
         <Toolbar variant="dense">
-          <Grid container justifyContent={'space-between'}>
+          <Grid container justifyContent={'space-between'} className='fonte'>
             <Box style={{ cursor: 'pointer' }}>
-              <Typography variant="h5" color="inherit">
+              <Typography variant="h5" color="inherit" className='fonte'>
                 Site do Goinha
               </Typography>
             </Box>
@@ -46,10 +54,17 @@ function Navbar() {
                   </Typography>
                 </Box>
               </Link>
-              <Link to="/cadastrarTema">
+              <Link to="/formularioTema">
                 <Box mx={1} style={{ cursor: 'pointer' }}>
                   <Typography variant="h6" color="inherit">
                     cadastrar tema
+                  </Typography>
+                </Box>
+              </Link>
+              <Link to="/perfil">
+                <Box mx={1} style={{ cursor: 'pointer' }}>
+                  <Typography variant="h6" color="inherit">
+                    perfil
                   </Typography>
                 </Box>
               </Link>
@@ -62,6 +77,12 @@ function Navbar() {
           </Grid>
         </Toolbar>
       </AppBar>
+    )
+  }
+
+  return (
+    <>
+      {navbarComponent}
     </>
   );
 }

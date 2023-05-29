@@ -5,9 +5,13 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 
 function Footer() {
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
   return (
     <footer className='footer'>
       <Grid container py={4} alignItems={'center'}>
@@ -24,7 +28,7 @@ function Footer() {
           <Box display={'flex'} gap={2} alignItems={'center'} className='iconesFooter'>
             <GitHubIcon fontSize='inherit' className='iconeInd' />
             <LinkedInIcon fontSize='inherit' className='iconeInd' />
-          </Box>
+          </Box> : <> cê não logou ainda não primo</>
         </Grid>
         <Grid item xs={4} display={'flex'} justifyContent={'center'}>
           <Typography variant='h5'>Em parceria com: Generation Brasil</Typography>
